@@ -21,7 +21,7 @@ app
     })
   )
   .use(helmet())
-  .use(cors({ origin: FRONTEND_URL, credentials: true }))
+  .use(cors({ origin: FRONTEND_URL }))
   .use(express.json())
 
 // Regular Routes
