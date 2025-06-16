@@ -1,4 +1,5 @@
 import { Service } from "@/structures/service.structure"
+import { logger } from "@/utilities/logger.utility"
 import { Chat, GoogleGenAI } from "@google/genai"
 import { randomUUID } from "crypto"
 
@@ -68,7 +69,7 @@ class ChatService extends Service {
       systemInstruction: PERSONALITY,
     }
     this.startCleanupInterval()
-    console.log("[Haebot AI Service] Initialized successfully.")
+    logger.info("[Haebot AI Service] Initialized successfully.")
   }
 
   private startCleanupInterval(): void {
@@ -82,7 +83,7 @@ class ChatService extends Service {
         }
       }
       if (cleanedCount > 0) {
-        console.log(
+        logger.info(
           `[Haebot AI Cleanup] Purged ${cleanedCount} inactive sessions.`
         )
       }
@@ -98,12 +99,12 @@ class ChatService extends Service {
     let chat: Chat
 
     if (!sessionData) {
-      console.log(
+      logger.info(
         `[Haebot AI Service] Creating new session for ID: ${sessionId}`
       )
       chat = this.client.chats.create(this.modelConfig)
     } else {
-      console.log(`[Haebot AI Service] Continuing session for ID: ${sessionId}`)
+      logger.info(`[Haebot AI Service] Continuing session for ID: ${sessionId}`)
       chat = sessionData.chat
     }
 
