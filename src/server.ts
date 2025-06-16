@@ -5,6 +5,7 @@ import helmet from "helmet"
 import { FRONTEND_URL } from "@/configs/env.config"
 import { logger } from "@/utilities/logger.utility"
 import { errorMiddleware } from "@/middlewares/error.middleware"
+import { ChatController } from "./modules"
 
 const app = express()
 
@@ -29,6 +30,8 @@ app
   .get("/", (req, res) => {
     res.send("Hello World!")
   })
+  // Chat
+  .use("/chat", new ChatController().router)
 
 // After request middlewares
 app.use(errorMiddleware)
