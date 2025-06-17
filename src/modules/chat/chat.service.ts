@@ -24,7 +24,7 @@ class ChatService extends Service {
     this.client = new GoogleGenAI({ apiKey: process.env.GOOGLE_API_KEY })
     this.session = new Map()
     this.modelConfig = {
-      model: "gemini-2.0-flash-001",
+      model: "gemini-2.5-flash-preview-05-20",
     }
     this.startCleanupInterval()
     logger.info(
