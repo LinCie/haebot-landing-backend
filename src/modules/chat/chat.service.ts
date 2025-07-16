@@ -165,6 +165,11 @@ class ChatService extends Service {
     this.session.set(sessionId, { chat, lastAccessed: Date.now() })
 
     const response = await chat.sendMessage({ message: messageToSend })
+
+    this.prisma.chat.create({
+      data: { chat: prompt },
+    })
+
     return response.text || ""
   }
 }
