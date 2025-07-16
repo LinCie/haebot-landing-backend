@@ -19,3 +19,9 @@ model Chat {
   chat      String
   timestamp DateTime @default(now())
 }
+
+model Event {
+  id        String   @id @default(uuid()) @db.Uuid
+  event     String
+  timestamp DateTime @default(now())
+}
