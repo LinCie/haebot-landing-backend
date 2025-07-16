@@ -166,7 +166,7 @@ class ChatService extends Service {
 
     const response = await chat.sendMessage({ message: messageToSend })
 
-    this.prisma.chat.create({
+    await this.prisma.chat.create({
       data: { chat: prompt },
     })
 
