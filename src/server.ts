@@ -1,6 +1,7 @@
 import express from "express"
 import morgan from "morgan"
 import helmet from "helmet"
+import cors from "cors"
 import { logger } from "@/utilities/logger.utility"
 import { errorMiddleware } from "@/middlewares/error.middleware"
 import { ChatController, EventController } from "./modules"
@@ -19,6 +20,7 @@ app
     })
   )
   .use(helmet())
+  .use(cors())
   .use(express.json())
 
 // Regular Routes
